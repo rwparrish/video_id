@@ -1,10 +1,10 @@
 class CreateVideos < ActiveRecord::Migration
   def change
-    create_table do |t|
+    create_table :videos do |t|
       t.string :title
       t.string :notes
-      t.datetime :datetime
+      t.datetime :entry_date
+      t.integer :user_id
     end
-    
   end
 end
