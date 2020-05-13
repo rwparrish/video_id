@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20200511145356) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title"
-    t.string   "notes"
-    t.datetime "entry_date"
-    t.integer  "user_id"
+    t.string  "title"
+    t.string  "notes"
+    t.date    "entry_date"
+    t.integer "user_id"
   end
 
 end

@@ -3,7 +3,7 @@ class CreateVideos < ActiveRecord::Migration
     create_table :videos do |t|
       t.string :title
       t.string :notes
-      t.datetime :entry_date
+      t.date :entry_date
       t.integer :user_id
     end
   end
