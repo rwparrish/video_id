@@ -13,9 +13,16 @@ class VideosController < ApplicationController
         if !is_logged_in?
             redirect '/login'
         end
+        erb :'/videos/new'
     end
 
     post '/videos/new' do
+        @vid = current_user.videos.build(params)
+        if @vid.save
+            redirect "/videos/#{@vid.id}"
+        else
+            erb :'/videos/new'
+        end
     end
 
     get '/videos/:id' do

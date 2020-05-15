@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
     post '/login' do
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
-            sessions[:user_id] = @user.id
-            redirect_to '/videos'
+            session[:user_id] = @user.id
+            redirect '/videos'
         else
             erb :'/sessions/login'
         end
