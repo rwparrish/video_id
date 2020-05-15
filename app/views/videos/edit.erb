@@ -1,0 +1,7 @@
+<form action='/videos/<%=@vid.id%>' method='POST'>
+<input id='hidden' type='hidden' name='_method' value='PATCH'>
+<input type='text' name='title' value='<%= @vid.title %>'>
+<input type='text' name='notes' value='<%= @vid.notes %>'>
+<input type='date' name='entry_date' value='<%= @vid.entry_date %>'>
+<input type='submit' value='EDIT'>
+</form>
