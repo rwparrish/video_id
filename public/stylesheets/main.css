@@ -59,6 +59,10 @@
     margin-bottom: 18px;
   }
 
+  a {
+    color: rgb(210, 164, 96);
+  }
+
   .main {
     overflow: hidden;
   }
