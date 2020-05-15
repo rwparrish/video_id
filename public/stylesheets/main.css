@@ -13,14 +13,20 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-image: url('/images/dumplings.jpg');
+    background-size: 1920px 1080px;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
+  .error_message {
+    color: red;
+    font-weight: bold;
+  }
+
   .wrapper {
-    background: #fff;
+    background: #1A2F5A;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -28,6 +34,8 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+    border-radius: 12px;
+    color: #fff;
   }
 
   h1 {
@@ -112,4 +120,6 @@
     font-size: 18px;
     line-height: 24px;
   }
+
+  
 }

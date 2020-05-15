@@ -1,11 +1,11 @@
-<%= @vid.title %>
-<%= @vid.notes %>
-<%= @vid.entry_date %>
-<a href="/videos/<%= @vid.id %>/edit"><button>Edit</button></a>
+<%= @vid.title %><br>
+<%= @vid.notes %><br>
+<%= @vid.entry_date %><br><br>
 
+<a href="/videos/<%= @vid.id %>/edit"><button>Edit</button></a>
 <form action="/videos/<%= @vid.id %>" method='POST'>
 <input id='hidden' type='hidden' name='_method' value='DELETE'>
 <input type='submit' value='Delete'>
-</form>
+</form><br><br>
 
 <a href='/videos'><button>Back to Videos</button></a>

@@ -8,9 +8,9 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        user = User.new(params)
-        if user.save
-            session[:user_id] = user.id
+        @user = User.new(params)
+        if @user.save
+            session[:user_id] = @user.id
             redirect '/videos'
         else 
             erb :'/users/new'

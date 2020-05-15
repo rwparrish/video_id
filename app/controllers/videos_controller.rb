@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
     
-    get '/videos' do
+    get '/videos' do #index route
        if !is_logged_in?
            redirect '/login'
        end
@@ -9,14 +9,14 @@ class VideosController < ApplicationController
        erb :'/videos/index'
     end
 
-    get '/videos/new' do 
+    get '/videos/new' do #new route
         if !is_logged_in?
             redirect '/login'
         end
         erb :'/videos/new'
     end
 
-    post '/videos/new' do
+    post '/videos' do #create route
         @vid = current_user.videos.build(params)
         if @vid.save
             redirect "/videos/#{@vid.id}"
@@ -25,35 +25,44 @@ class VideosController < ApplicationController
         end
     end
 
-    get '/videos/:id' do
-        if !is_logged_in?
-            redirect '/login'
-        end
-            @vid = current_user.videos.find_by_id(params[:id])
-            erb :'/videos/show'
-    end
-
-    get '/videos/:id/edit' do
+    get '/videos/:id' do #show route
         if !is_logged_in?
             redirect '/login'
         end
         @vid = current_user.videos.find_by_id(params[:id])
-        if session[:user_id] != @vid.user_id
+        if @vid
+            erb :'/videos/show'
+        else
+            redirect '/videos'
+        end
+    end
+
+    get '/videos/:id/edit' do #edit route
+        if !is_logged_in?
+            redirect '/login'
+        end
+        @vid = current_user.videos.find_by_id(params[:id])
+        if !@vid
             redirect '/videos'
         end
         erb :'/videos/edit'
     end
 
-    patch '/videos/:id' do
+    patch '/videos/:id' do #update route
         @vid = current_user.videos.find_by_id(params[:id])
         if @vid 
-            @vid.update(title: params[:title], notes: params[:notes], entry_date: params[:entry_date])
-            @vid.save
+            if @vid.update(title: params[:title], notes: params[:notes], entry_date: params[:entry_date])
+                redirect "/videos/#{@vid.id}" 
+            else
+                # handle errors on edit form class error_massages
+                erb :'/videos/edit'
+            end
+        else
+            redirect '/videos'
         end
-        redirect "/videos/#{@vid.id}"
     end
 
-    delete '/videos/:id' do
+    delete '/videos/:id' do #destroy route
         if !is_logged_in?
             redirect '/login'
         end

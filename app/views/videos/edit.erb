@@ -1,7 +1,18 @@
+<% if @vid %>
+<ul>
+    <% @vid.errors.full_messages.each do |m| %>
+        <li class='error_message'><%= m %></li>
+    <% end %>
+</ul>
+<br>
+<% end %>
+
 <form action='/videos/<%=@vid.id%>' method='POST'>
 <input id='hidden' type='hidden' name='_method' value='PATCH'>
-<input type='text' name='title' value='<%= @vid.title %>'>
-<input type='text' name='notes' value='<%= @vid.notes %>'>
-<input type='date' name='entry_date' value='<%= @vid.entry_date %>'>
+Video Title: <input type='text' name='title' value='<%= @vid.title %>'>
+Description: <input type='text' name='notes' value='<%= @vid.notes %>'>
+Date Logged: <input type='date' name='entry_date' value='<%= @vid.entry_date %>'>
 <input type='submit' value='EDIT'>
-</form>
+</form><br>
+
+<a href='/videos'><button>Back to Videos</button></a>
