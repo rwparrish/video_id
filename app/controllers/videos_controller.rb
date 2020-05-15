@@ -44,7 +44,7 @@ class VideosController < ApplicationController
         erb :'/videos/edit'
     end
 
-    patch '/videos/:id/' do
+    patch '/videos/:id' do
         @vid = current_user.videos.find_by_id(params[:id])
         if @vid 
             @vid.update(title: params[:title], notes: params[:notes], entry_date: params[:entry_date])

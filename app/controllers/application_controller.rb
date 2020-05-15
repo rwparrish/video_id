@@ -13,6 +13,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    if is_logged_in?
+      redirect '/videos'
+    end
     erb :welcome
   end
 

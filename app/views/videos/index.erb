@@ -1,10 +1,12 @@
 <a href='/videos/new'><button>New Video Idea!</button></a>
 
 <% @vids.each do |v| %>
-<%= v.title %>
+<a href='/videos/<%=v.id%>'><%= v.title %></a>
 <%= v.notes %>
 <%= v.entry_date %>
 <% end %>
+
+<a href='/logout'><button>Log Out</button></a>
 
 
 
