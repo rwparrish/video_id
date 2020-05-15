@@ -29,21 +29,30 @@ class VideosController < ApplicationController
         if !is_logged_in?
             redirect '/login'
         end
+            @vid = current_user.videos.find_by_id(params[:id])
+            erb :'/videos/show'
     end
 
     get '/videos/:id/edit' do
         if !is_logged_in?
             redirect '/login'
         end
+        @vid = current_user.videos.find_by_id(params[:id])
+        if session[:user_id] != @vid.user_id
+            redirect '/videos'
+        end
+        erb :'/videos/edit'
     end
 
     patch '/videos/:id/' do
+        @vid = current_user.videos.find_by_id(params[:id])
     end
 
     delete '/videos/:id' do
         if !is_logged_in?
             redirect '/login'
         end
+        @vid = current_user.videos.find_by_id(params[:id])
     end
 
 end
