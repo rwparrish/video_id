@@ -1,7 +1,16 @@
+<% if @vid %>
+<ul>
+    <% @vid.errors.full_messages.each do |m| %>
+        <li class='error_message'><%= m %></li>
+    <% end %>
+</ul>
+<br>
+<% end %>
+
 <form action='/videos' method='POST'>
 Video Title: <input type='text' name='title'>
 Description: <input type='text' name='notes'>
 Date Logged: <input type='date' name='entry_date'>
 <input type='submit' value='Log Idea!'>
 </form><br>
-<a href='/videos'><button>Back to Videos</button></a>
+<a href='/videos'><button class='button'>Back to Videos</button></a>
